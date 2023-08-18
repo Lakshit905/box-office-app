@@ -4,7 +4,7 @@ import Starred from "./Starred";
 const Home = () => {
     return (
     <div>
-        <Link to="/starred">Go to Starred </Link>
+        Home
     </div>
     
     )
