@@ -4,7 +4,7 @@ import { searchForShows } from '../api/tvmaze';
 import { searchForPeople } from '../api/tvmaze';
 import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
-import ActorGrid from '../components/actors/ActorGrid';
+import ActorsGrid from '../components/actors/ActorsGrid';
 
 const Home = () => {
   const [apiDataError, setApiDataError] = useState(null);
@@ -13,7 +13,7 @@ const Home = () => {
   const onSearch = async ({ q, searchOption }) => {
     try {
       setApiDataError(null);
-      if (searchOption === 'show') {
+      if (searchOption === 'shows') {
         const result = await searchForShows(q);
         setApiData (result);
       } else {
@@ -30,14 +30,16 @@ const Home = () => {
       return <div>Error Occured : {apiDataError.message}</div>;
     }
 
-    if(apiData?.length === 0){
-      return <div>Not Found</div>
+    if (apiData?.length === 0) {
+      return <div>No results</div>;
     }
     
     if (apiData) {
-      return apiData[0].show
-        ? <ShowGrid shows ={apiData}/>
-        : <ActorGrid actors ={apiData}/>;
+      return apiData[0].show ? (
+        <ShowGrid shows={apiData} />
+      ) : (
+        <ActorsGrid actors={apiData} />
+      );
     }
 
     return null;
