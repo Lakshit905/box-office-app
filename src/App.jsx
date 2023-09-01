@@ -1,6 +1,6 @@
 import Starred from './pages/Starred';
 import Home from './pages/Home';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/MainLayout';
 import Show from './pages/Show';
