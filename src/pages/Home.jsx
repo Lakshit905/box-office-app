@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { useState } from 'react';
 import { searchForShows } from '../api/tvmaze';
@@ -6,6 +5,7 @@ import { searchForPeople } from '../api/tvmaze';
 import SearchForm from '../components/SearchForm';
 import ShowGrid from '../components/shows/ShowGrid';
 import ActorsGrid from '../components/actors/ActorsGrid';
+import { TextCenter } from '../components/common/TextCenter';
 
 const Home = () => {
   const [filter, setFilter] = useState(null);
@@ -27,11 +27,11 @@ const Home = () => {
 
   const renderApiData = () => {
     if (apiDataError) {
-      return <div>Error Occured : {apiDataError.message}</div>;
+      return <TextCenter>Error occured: {apiDataError.message}</TextCenter>;
     }
 
     if (apiData?.length === 0) {
-      return <div>No results</div>;
+      return <TextCenter>No results</TextCenter>;
     }
     
     if (apiData) {
